@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:tns="http://www.example.com/newspaper">
+
+<element name="newspaper">
+<complexType>
+<sequence>
+<element name="newspaper" type="tns:newspaper" minOccurs="2" maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+</element>
+
+<element name="magazine">
+<complexType>
+<sequence>
+<element name="magazine" type="tns:magazine" minOccurs="2" maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+</element>
+
+<complexType name="newspaper">
+<complexContent>
+<attribute>
+<attribute name="id" type="integer"/>
+</attribute>
+<simpleType>
+<sequence>
+<element name="title" type="string" use="required" />
+<element name="subscription-index" type="boolean" use="required" />
+<element name="output-frequency" use="required">
+<restriction base="string">
+<enumeration value="every week"></enumeration>
+<enumeration value="once in two weeks"></enumeration>
+<enumeration value="once a month"></enumeration>
+</restriction>
+</sequence>
+</simpleType>
+</complexContent>
+</complexType>
+
+<complexType name="magazine">
+<complexContent>
+<attribute>
+<attribute name="id" type="integer"/>
+</attribute>
+<extension base="newspaper">
+<sequence>
+<element name="subscription-cost" type="double" />
+<element name="subject" type="string" />
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>

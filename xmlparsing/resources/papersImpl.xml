@@ -1,0 +1,31 @@
+<papers>
+
+<newspaper id="101">
+<title>Pravda</title>
+<subscription-index>no</subscription-index>
+<output-frequency>every week</output-frequency>
+</newspaper>
+
+<newspaper id="105">
+<title>Gzenskaa gazeta</title>
+<subscription-index>no</subscription-index>
+<output-frequency>once a month</output-frequency>
+</newspaper>
+
+<magazine id="233">
+<title>Psychologies</title>
+<subscription-index>yes</subscription-index>
+<output-frequency>once a month</output-frequency>
+<subscription-cost>15</subscription-cost>
+<subject>psychology</subject>
+</magazine>
+
+<magazine id="105">
+<title>Soviet sport</title>
+<subscription-index>yes</subscription-index>
+<output-frequency>once in two weeks</output-frequency>
+<subscription-cost>10</subscription-cost>
+<subject>sport</subject>
+</magazine>
+
+</papers>
