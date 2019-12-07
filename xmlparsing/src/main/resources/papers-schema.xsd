@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.example.com/papers"
+        targetNamespace="http://www.example.com/papers"
+        elementFormDefault="qualified">
+    <element name="papers">
+        <complexType>
+            <sequence>
+                <element ref="tns:paper"
+                         minOccurs="0"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="paper" type="tns:paper" abstract="true"/>
+    <element name="newspaper" type="tns:newspaper" substitutionGroup="tns:paper"/>
+    <element name="magazine" type="tns:magazine" substitutionGroup="tns:paper"/>
+
+
+    <complexType name="paper">
+        <sequence>
+            <element type="string" name="title"/>
+            <element type="integer" name="price"/>
+        </sequence>
+        <attribute name="id" type="integer" use="required"/>
+        <attribute name="owner" type="string" use="optional"/>
+    </complexType>
+    <complexType name="newspaper">
+        <complexContent>
+            <extension base="tns:paper">
+                <sequence>
+                    <element type="integer" name="subscription-index"/>
+                    <element name="output-frequency">
+                        <simpleType>
+                            <restriction base="string">
+                                <enumeration value="every week"></enumeration>
+                                <enumeration value="once in two weeks"></enumeration>
+                                <enumeration value="once a month"></enumeration>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="magazine">
+        <complexContent>
+            <extension base="tns:newspaper">
+                <sequence>
+                    <element type="string" name="subject"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+</schema>
