@@ -1,6 +1,6 @@
-package com.epam.parser.sax;
+package com.epam.paper.parser.sax;
 
-import com.epam.entity.Paper;
+import com.epam.paper.entity.Paper;
 
 import java.io.IOException;
 import java.util.Set;
@@ -9,12 +9,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-public class PapersSAXBuilder {
+public class PapersSaxBuilder {
     private Set<Paper> papers;
     private PaperHandler paperHandler;
     private XMLReader reader;
 
-    public PapersSAXBuilder() {
+    public PapersSaxBuilder() {
         paperHandler = new PaperHandler();
         try {
             reader = XMLReaderFactory.createXMLReader();

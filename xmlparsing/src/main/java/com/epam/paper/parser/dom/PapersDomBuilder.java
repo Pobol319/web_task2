@@ -1,9 +1,9 @@
-package com.epam.parser.dom;
+package com.epam.paper.parser.dom;
 
-import com.epam.entity.Magazine;
-import com.epam.entity.Newspaper;
-import com.epam.entity.OutputFrequencyEnum;
-import com.epam.entity.Paper;
+import com.epam.paper.entity.Magazine;
+import com.epam.paper.entity.Newspaper;
+import com.epam.paper.entity.OutputFrequencyEnum;
+import com.epam.paper.entity.Paper;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -18,14 +18,14 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PapersDOMBuilder {
+public class PapersDomBuilder {
     private Set<Paper> papers;
     private DocumentBuilder documentBuilder;
 
     private static final String NEWSPAPER = "newspaper";
     private static final String MAGAZINE = "magazine";
 
-    public PapersDOMBuilder() {
+    public PapersDomBuilder() {
         this.papers = new HashSet<Paper>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -95,7 +95,7 @@ public class PapersDOMBuilder {
     }
 
     private void setPaperFields(Element paperElement, Paper paper) {
-        paper.setId(Integer.parseInt(paperElement.getAttribute("id")));
+        paper.setId(paperElement.getAttribute("id"));
         paper.setOwner(paperElement.getAttribute("owner"));
         paper.setTitle(getElementTextContent(paperElement, "title"));
         paper.setPrice(Integer.parseInt(getElementTextContent(paperElement, "price")));

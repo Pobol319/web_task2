@@ -1,12 +1,36 @@
-package com.epam.entity;
+package com.epam.paper.entity;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+
+@XmlType(name = "paper", propOrder = {"title", "price"})
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Newspaper.class, Magazine.class})
 public abstract class Paper {
-    private int id;
+    @XmlAttribute(name = "id", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlID
+    private String id;
+    @XmlAttribute(name = "owner", required = false)
     private String owner;
+    @XmlElement(name = "title")
     private String title;
+    @XmlElement(name = "price")
     private int price;
 
-    public void setId(int id) {
+    public Paper() {
+    }
+
+    public Paper(String id, String owner, String title, int price) {
+        this.id = id;
+        this.owner = owner;
+        this.title = title;
+        this.price = price;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -22,7 +46,7 @@ public abstract class Paper {
         this.price = price;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -47,7 +71,7 @@ public abstract class Paper {
             return false;
         }
         Paper paperObj = (Paper) obj;
-        return this.id == paperObj.id && this.owner.equals(paperObj.owner) &&
+        return this.id.equals(paperObj.id) && this.owner.equals(paperObj.owner) &&
                 this.title.equals(paperObj.owner) && this.price == paperObj.price;
     }
 
@@ -67,10 +91,10 @@ public abstract class Paper {
     @Override
     public String toString() {
         return " \n Papers: " +
-                "id = " + id  +
+                "id = " + id +
                 ", owner = " + owner +
                 ", title = " + title +
-                ", price = " + price ;
+                ", price = " + price;
     }
 
 

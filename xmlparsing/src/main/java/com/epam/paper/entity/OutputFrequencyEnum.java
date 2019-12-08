@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.epam.paper.entity;
 
 public enum OutputFrequencyEnum {
     EVERY_WEEK("every week"),

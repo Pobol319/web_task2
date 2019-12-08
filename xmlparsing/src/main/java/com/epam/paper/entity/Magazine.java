@@ -1,7 +1,21 @@
-package com.epam.entity;
+package com.epam.paper.entity;
 
+import javax.xml.bind.annotation.*;
+
+
+@XmlType(name = "magazine", propOrder = {"subject"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Magazine extends Newspaper {
+    @XmlElement(name = "subject")
     private String subject;
+
+    public Magazine() {
+    }
+
+    public Magazine(String id, String owner, String title, int price, int subscriptionIndex, OutputFrequencyEnum outputFrequency, String subject) {
+        super(id, owner, title, price, subscriptionIndex, outputFrequency);
+        this.subject = subject;
+    }
 
     public void setSubject(String subject) {
         this.subject = subject;

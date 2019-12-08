@@ -1,8 +1,24 @@
-package com.epam.entity;
+package com.epam.paper.entity;
 
+import javax.xml.bind.annotation.*;
+
+
+@XmlType(name = "newspaper", propOrder = {"subscription-index", "output-frequency"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Newspaper extends Paper {
+    @XmlElement(name = "subscription-index")
     private int subscriptionIndex;
+    @XmlElement(name = "output-frequency")
     private OutputFrequencyEnum outputFrequency;
+
+    public Newspaper() {
+    }
+
+    public Newspaper(String id, String owner, String title, int price, int subscriptionIndex, OutputFrequencyEnum outputFrequency) {
+        super(id, owner, title, price);
+        this.subscriptionIndex = subscriptionIndex;
+        this.outputFrequency = outputFrequency;
+    }
 
     public void setSubscriptionIndex(int subscriptionIndex) {
         this.subscriptionIndex = subscriptionIndex;
@@ -45,7 +61,7 @@ public class Newspaper extends Paper {
     @Override
     public String toString() {
         return super.toString() + ", subscriptionIndex = " + subscriptionIndex + " " +
-                ", outputFrequency = " + outputFrequency.toString() ;
+                ", outputFrequency = " + outputFrequency.toString();
     }
 
 

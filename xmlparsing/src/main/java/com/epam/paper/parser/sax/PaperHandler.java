@@ -1,6 +1,6 @@
-package com.epam.parser.sax;
+package com.epam.paper.parser.sax;
 
-import com.epam.entity.*;
+import com.epam.paper.entity.*;
 
 import java.util.EnumSet;
 import java.util.HashSet;
@@ -29,11 +29,11 @@ public class PaperHandler extends DefaultHandler {
         String magazine = PaperEnum.MAGAZINE.getValue();
         if (newspaperValue.equals(localName)) {
             current = new Newspaper();
-            current.setId(Integer.parseInt(arts.getValue(0)));
+            current.setId(arts.getValue(0));
             current.setOwner(arts.getValue(1));
         } else if (magazine.equals(localName)) {
             current = new Magazine();
-            current.setId(Integer.parseInt(arts.getValue(0)));
+            current.setId(arts.getValue(0));
             current.setOwner(arts.getValue(1));
         } else {
             PaperEnum temp = convertIntoPaperEnum(localName);

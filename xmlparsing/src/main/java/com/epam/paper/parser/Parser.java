@@ -1,6 +1,6 @@
-package com.epam.parser;
+package com.epam.paper.parser;
 
-import com.epam.entity.Paper;
+import com.epam.paper.entity.Paper;
 
 import java.util.List;
 

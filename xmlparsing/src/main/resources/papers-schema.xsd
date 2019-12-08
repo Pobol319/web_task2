@@ -23,7 +23,7 @@
             <element type="string" name="title"/>
             <element type="integer" name="price"/>
         </sequence>
-        <attribute name="id" type="integer" use="required"/>
+        <attribute name="id" type="string" use="required"/>
         <attribute name="owner" type="string" use="optional"/>
     </complexType>
     <complexType name="newspaper">
