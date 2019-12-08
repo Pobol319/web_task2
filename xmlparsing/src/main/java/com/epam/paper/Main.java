@@ -33,12 +33,28 @@ public class Main {
         papersSAXBuilder.buildSetPapers(pathXml);
         System.out.println(papersSAXBuilder.getPapers());*/
 
-        Papers pap = new Papers();
+        /*Papers pap = new Papers();
         JaxbParser parser = new JaxbParser();
         File file = new File(pathXml);
         pap.setPapers(parser.getData("./src/main/resources/papersImpl.xml"));
-        System.out.println(pap.getPapers().toString());
+        System.out.println(pap.getPapers().toString());*/
 
+        JAXBContext jc = null;
+        try {
+            jc = JAXBContext.newInstance(Papers.class);
+            Unmarshaller um = jc.createUnmarshaller();
+            String schemaName = pathXsd;
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            File schemaLocation = new File(schemaName);
+            Schema schema = factory.newSchema(schemaLocation);
+            um.setSchema(schema);
+            Papers st = (Papers) um.unmarshal(new File(pathXml));
+            System.out.println(st);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
 
     }
 

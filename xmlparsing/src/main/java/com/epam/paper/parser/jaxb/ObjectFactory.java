@@ -7,8 +7,10 @@ import com.epam.paper.entity.Papers;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+@XmlRegistry
 public class ObjectFactory {
     private final static QName _Paper_QNAME = new QName("http://www.example.com/papers", "paper");
     private final static QName _Newspaper_QNAME = new QName("http://www.example.com/papers", "newspaper");
@@ -29,7 +31,7 @@ public class ObjectFactory {
         return new Magazine();
     }
 
-    @XmlElementDecl(namespace = "http://www.example.com/papers", name = "paper", substitutionHeadNamespace = "http://www.example.com/papers", substitutionHeadName = "paper")
+    @XmlElementDecl(namespace = "http://www.example.com/papers", name = "paper")
     public JAXBElement<Paper> createPaper(Paper value) {
         return new JAXBElement<Paper>(_Paper_QNAME, Paper.class, null, value);
     }

@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.List;
 
 public class JaxbParser {
-
+/*
     public List<Paper> getData(String path) throws IllegalAccessException {
         File file = new File(path);
         try {
@@ -21,6 +21,6 @@ public class JaxbParser {
         } catch (JAXBException e) {
             throw new IllegalAccessException();
         }
-    }
+    }*/
 
 }
