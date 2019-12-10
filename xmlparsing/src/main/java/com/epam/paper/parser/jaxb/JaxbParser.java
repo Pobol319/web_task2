@@ -19,7 +19,6 @@ import java.util.List;
 
 public class JaxbParser implements Parser {
     private static final String PACKAGE_INFO = "com.epam.paper.entity";
-    private static final String PATH_TO_XSD = "src\\main\\resources\\papers.xsd";
 
     public List<Paper> parse(String pathToFile) throws XmlParserException {
         JAXBContext jc = null;
@@ -29,7 +28,8 @@ public class JaxbParser implements Parser {
             jc = JAXBContext.newInstance(PACKAGE_INFO);
             Unmarshaller um = jc.createUnmarshaller();
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            File schemaLocation = new File(PATH_TO_XSD);
+            String schemaName = getClass().getClassLoader().getResource("papers.xsd").getPath();
+            File schemaLocation = new File(schemaName);
             Schema schema = factory.newSchema(schemaLocation);
             um.setSchema(schema);
             Papers papers = (Papers) um.unmarshal(file);

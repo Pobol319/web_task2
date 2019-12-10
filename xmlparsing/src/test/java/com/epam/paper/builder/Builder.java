@@ -1,5 +1,4 @@
 package com.epam.paper.builder;
-
 import com.epam.paper.entity.Magazine;
 import com.epam.paper.entity.OutputFrequencyEnum;
 import com.epam.paper.entity.Paper;
@@ -27,3 +26,4 @@ public class Builder {
         return magazine;
     }
 }
+

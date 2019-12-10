@@ -53,7 +53,7 @@ public class Main {
         System.out.println(jaxbParser.parse(pathXml));*/
 
         PapersFactory factory = new PapersFactory();
-        Parser parser = factory.createParser("DOM");
+        Parser parser = factory.createParser("JAXB");
         System.out.println(parser.parse(pathXml));
 
     }

@@ -32,7 +32,7 @@ public class PapersDomBuilder {
         try {
             documentBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            throw new XmlParserException("DOM parsing failure",e);
+            throw new XmlParserException("DOM parsing failure", e);
         }
     }
 
@@ -50,7 +50,7 @@ public class PapersDomBuilder {
             addPaper(root, MAGAZINE);
 
         } catch (SAXException | IOException e) {
-            throw new XmlParserException("DOM parsing failure",e);
+            throw new XmlParserException("DOM parsing failure", e);
         }
     }
 
@@ -85,12 +85,15 @@ public class PapersDomBuilder {
     }
 
     private void setMagazineFields(Element paperElement, Paper paper) {
-        ((Magazine) paper).setSubject(getElementTextContent(paperElement, "subject"));
+        String subject = getElementTextContent(paperElement, "subject");
+        ((Magazine) paper).setSubject(subject);
     }
 
     private void setNewspaperFields(Element paperElement, Paper paper) {
-        ((Newspaper) paper).setSubscriptionIndex(Integer.parseInt(getElementTextContent(paperElement, "subscription-index")));
-        ((Newspaper) paper).setOutputFrequency(OutputFrequencyEnum.valueOf(getElementTextContent(paperElement, "output-frequency").toUpperCase()));
+        int subscriptionIndex = Integer.parseInt(getElementTextContent(paperElement, "subscription-index"));
+        ((Newspaper) paper).setSubscriptionIndex(subscriptionIndex);
+        OutputFrequencyEnum outputFrequencyEnum = OutputFrequencyEnum.valueOf(getElementTextContent(paperElement, "output-frequency").toUpperCase());
+        ((Newspaper) paper).setOutputFrequency(outputFrequencyEnum);
     }
 
     private void setPaperFields(Element paperElement, Paper paper) {

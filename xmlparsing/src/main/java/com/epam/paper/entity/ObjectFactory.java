@@ -1,9 +1,5 @@
 package com.epam.paper.entity;
 
-import com.epam.paper.entity.Magazine;
-import com.epam.paper.entity.Newspaper;
-import com.epam.paper.entity.Paper;
-import com.epam.paper.entity.Papers;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
