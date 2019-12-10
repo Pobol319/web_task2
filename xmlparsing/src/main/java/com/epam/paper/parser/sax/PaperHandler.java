@@ -2,25 +2,23 @@ package com.epam.paper.parser.sax;
 
 import com.epam.paper.entity.*;
 
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class PaperHandler extends DefaultHandler {
-    private Set<Paper> papers;
+    private List<Paper> papers;
     private Paper current = null;
     private PaperEnum currentEnum = null;
     private EnumSet<PaperEnum> withText;
 
     public PaperHandler() {
-        papers = new HashSet<Paper>();
+        papers = new ArrayList<Paper>();
         withText = EnumSet.range(PaperEnum.TITLE, PaperEnum.SUBJECT);
     }
 
-    public Set<Paper> getPapers() {
+    public List<Paper> getPapers() {
         return papers;
     }
 

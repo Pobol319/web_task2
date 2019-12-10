@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<papers>
-    <newspaper id="101">
+
+
+<papers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.com/papers"
+        xsi:schemaLocation=" http://www.example.com/papers  papers.xsd">
+
+    <newspaper id="b102">
         <title>Pravda</title>
         <price>10</price>
         <subscription-index>2220011</subscription-index>
         <output-frequency>every_week</output-frequency>
     </newspaper>
-    <newspaper id="902" owner="Government">
+    <newspaper id="c902" owner="Government">
         <title>Belarus</title>
         <price>8</price>
         <subscription-index>2220322</subscription-index>
         <output-frequency>once_a_month</output-frequency>
     </newspaper>
-    <magazine id="603">
+    <magazine id="e603">
         <title>Psychologies</title>
         <price>15</price>
         <subscription-index>2221122</subscription-index>
         <output-frequency>once_a_month</output-frequency>
         <subject>psychology</subject>
     </magazine>
-    <magazine id="301" owner="Individual">
+    <magazine id="z301" owner="Individual">
         <title>Soviet sport</title>
         <price>13</price>
         <subscription-index>2221122</subscription-index>

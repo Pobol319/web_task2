@@ -5,20 +5,21 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
-@XmlType(name = "paper", propOrder = {"title", "price"})
+@XmlType(name = "Paper", propOrder = {"title", "price"})
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({Newspaper.class, Magazine.class})
-public abstract class Paper {
+public class Paper {
     @XmlAttribute(name = "id", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
-    private String id;
+    @XmlSchemaType(name = "ID")
+    protected String id;
     @XmlAttribute(name = "owner", required = false)
-    private String owner;
+    protected String owner;
     @XmlElement(name = "title")
-    private String title;
+    protected String title;
     @XmlElement(name = "price")
-    private int price;
+    protected int price;
 
     public Paper() {
     }

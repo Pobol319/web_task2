@@ -4,6 +4,7 @@ import com.epam.paper.entity.Magazine;
 import com.epam.paper.entity.Newspaper;
 import com.epam.paper.entity.OutputFrequencyEnum;
 import com.epam.paper.entity.Paper;
+import com.epam.paper.exceptions.XmlParserException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -15,31 +16,31 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PapersDomBuilder {
-    private Set<Paper> papers;
+    private List<Paper> papers;
     private DocumentBuilder documentBuilder;
-
     private static final String NEWSPAPER = "newspaper";
     private static final String MAGAZINE = "magazine";
 
-    public PapersDomBuilder() {
-        this.papers = new HashSet<Paper>();
+    public PapersDomBuilder() throws XmlParserException {
+        this.papers = new ArrayList<Paper>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             documentBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-
+            throw new XmlParserException("DOM parsing failure",e);
         }
     }
 
-    public Set<Paper> getPapers() {
+    public List<Paper> getPapers() {
         return papers;
     }
 
-    public void buildSetPapers(String path) {
+    public void buildListPapers(String path) throws XmlParserException {
         Document document = null;
         try {
             document = documentBuilder.parse(path);
@@ -48,10 +49,8 @@ public class PapersDomBuilder {
             addPaper(root, NEWSPAPER);
             addPaper(root, MAGAZINE);
 
-        } catch (SAXException e) {
-
-        } catch (IOException e) {
-
+        } catch (SAXException | IOException e) {
+            throw new XmlParserException("DOM parsing failure",e);
         }
     }
 

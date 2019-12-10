@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Magazine extends Newspaper {
     @XmlElement(name = "subject")
-    private String subject;
+    protected String subject;
 
     public Magazine() {
     }

@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:tns="http://www.example.com/papers"
         targetNamespace="http://www.example.com/papers"
+        xmlns:tns="http://www.example.com/papers"
         elementFormDefault="qualified">
+
+    <element name="paper" type="tns:Paper" abstract="true"/>
+    <element name="newspaper" type="tns:Newspaper" substitutionGroup="tns:paper"/>
+    <element name="magazine" type="tns:Magazine" substitutionGroup="tns:paper"/>
+
     <element name="papers">
         <complexType>
             <sequence>
-                <element ref="tns:paper"
-                         minOccurs="0"
-                         maxOccurs="unbounded">
-                </element>
+                <element ref="tns:paper" minOccurs="1" maxOccurs="unbounded"></element>
             </sequence>
         </complexType>
     </element>
-    <element name="paper" type="tns:paper" abstract="true"/>
-    <element name="newspaper" type="tns:newspaper" substitutionGroup="tns:paper"/>
-    <element name="magazine" type="tns:magazine" substitutionGroup="tns:paper"/>
 
-
-    <complexType name="paper">
+    <complexType name="Paper">
         <sequence>
             <element type="string" name="title"/>
             <element type="integer" name="price"/>
         </sequence>
-        <attribute name="id" type="string" use="required"/>
-        <attribute name="owner" type="string" use="optional"/>
+        <attribute name="id" type="ID" use="required"/>
+        <attribute name="owner" type="string" use="optional" default="Individual"/>
     </complexType>
-    <complexType name="newspaper">
+
+    <complexType name="Newspaper">
         <complexContent>
-            <extension base="tns:paper">
+            <extension base="tns:Paper">
                 <sequence>
-                    <element type="integer" name="subscription-index"/>
+                    <element type="nonNegativeInteger" name="subscription-index"/>
                     <element name="output-frequency">
                         <simpleType>
                             <restriction base="string">
-                                <enumeration value="every week"></enumeration>
-                                <enumeration value="once in two weeks"></enumeration>
-                                <enumeration value="once a month"></enumeration>
+                                <enumeration value="every_week"/>
+                                <enumeration value="once_in_two_weeks"/>
+                                <enumeration value="once_a_month"/>
                             </restriction>
                         </simpleType>
                     </element>
@@ -44,9 +45,10 @@
             </extension>
         </complexContent>
     </complexType>
-    <complexType name="magazine">
+
+    <complexType name="Magazine">
         <complexContent>
-            <extension base="tns:newspaper">
+            <extension base="tns:Newspaper">
                 <sequence>
                     <element type="string" name="subject"/>
                 </sequence>

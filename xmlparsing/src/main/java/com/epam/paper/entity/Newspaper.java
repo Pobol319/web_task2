@@ -3,13 +3,14 @@ package com.epam.paper.entity;
 import javax.xml.bind.annotation.*;
 
 
-@XmlType(name = "newspaper", propOrder = {"subscription-index", "output-frequency"})
+@XmlType(name = "Newspaper", propOrder = {"subscriptionIndex", "outputFrequency"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Newspaper extends Paper {
     @XmlElement(name = "subscription-index")
-    private int subscriptionIndex;
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected int subscriptionIndex;
     @XmlElement(name = "output-frequency")
-    private OutputFrequencyEnum outputFrequency;
+    protected OutputFrequencyEnum outputFrequency;
 
     public Newspaper() {
     }

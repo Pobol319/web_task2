@@ -1,11 +1,15 @@
 package com.epam.paper;
 
-import com.epam.paper.entity.Newspaper;
-import com.epam.paper.entity.Paper;
-import com.epam.paper.entity.Papers;
+
+import com.epam.paper.exceptions.IncorrectTypeException;
+import com.epam.paper.exceptions.XmlParserException;
+import com.epam.paper.parser.Parser;
+import com.epam.paper.parser.dom.DomParser;
 import com.epam.paper.parser.dom.PapersDomBuilder;
+import com.epam.paper.parser.factory.PapersFactory;
 import com.epam.paper.parser.jaxb.JaxbParser;
 import com.epam.paper.parser.sax.PapersSaxBuilder;
+import com.epam.paper.parser.sax.SaxParser;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -20,41 +24,37 @@ import java.io.FileReader;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws JAXBException, IllegalAccessException {
+    public static void main(String[] args) throws JAXBException, IllegalAccessException, XmlParserException, SAXException, IncorrectTypeException {
 
         String pathXml = "src\\main\\resources\\papersImpl.xml";
-        String pathXsd = "src\\main\\resources\\papers-schema.xsd";
+        String pathXsd = "src\\main\\resources\\papers.xsd";
 
-/*        PapersDomBuilder papersDOMBuilder = new PapersDomBuilder();
-        papersDOMBuilder.buildSetPapers(pathXml);
-        System.out.println(papersDOMBuilder.getPapers());*/
+        /*DomParser domParser = new DomParser();
+        System.out.println(domParser.parse(pathXml));*/
 
-/*        PapersSaxBuilder papersSAXBuilder = new PapersSaxBuilder();
-        papersSAXBuilder.buildSetPapers(pathXml);
-        System.out.println(papersSAXBuilder.getPapers());*/
+       /* SaxParser saxParser = new SaxParser();
+        System.out.println(saxParser.parse(pathXml));*/
 
-        /*Papers pap = new Papers();
-        JaxbParser parser = new JaxbParser();
-        File file = new File(pathXml);
-        pap.setPapers(parser.getData("./src/main/resources/papersImpl.xml"));
-        System.out.println(pap.getPapers().toString());*/
 
-        JAXBContext jc = null;
-        try {
-            jc = JAXBContext.newInstance(Papers.class);
-            Unmarshaller um = jc.createUnmarshaller();
-            String schemaName = pathXsd;
-            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            File schemaLocation = new File(schemaName);
-            Schema schema = factory.newSchema(schemaLocation);
-            um.setSchema(schema);
-            Papers st = (Papers) um.unmarshal(new File(pathXml));
-            System.out.println(st);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
+      /*  JAXBContext context = JAXBContext.newInstance(Paper.class);
+
+        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = sf.newSchema(new File(pathXsd));
+
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+
+        unmarshaller.setSchema(schema);
+       *//* unmarshaller.setEventHandler(new EmployeeValidationEventHandler());*//*
+
+        Paper employee = (Paper) unmarshaller.unmarshal(new File("person.xml"));
+        System.out.println(employee);*/
+
+        /*JaxbParser jaxbParser = new JaxbParser();
+        System.out.println(jaxbParser.parse(pathXml));*/
+
+        PapersFactory factory = new PapersFactory();
+        Parser parser = factory.createParser("DOM");
+        System.out.println(parser.parse(pathXml));
 
     }
 

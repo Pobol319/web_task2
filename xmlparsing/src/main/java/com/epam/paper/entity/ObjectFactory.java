@@ -1,4 +1,4 @@
-package com.epam.paper.parser.jaxb;
+package com.epam.paper.entity;
 
 import com.epam.paper.entity.Magazine;
 import com.epam.paper.entity.Newspaper;
@@ -23,6 +23,10 @@ public class ObjectFactory {
         return new Papers();
     }
 
+    public Paper createPaper() {
+        return new Paper();
+    }
+
     public Newspaper createNewspaper() {
         return new Newspaper();
     }
@@ -41,7 +45,7 @@ public class ObjectFactory {
         return new JAXBElement<Newspaper>(_Newspaper_QNAME, Newspaper.class, null, value);
     }
 
-    @XmlElementDecl(namespace = "http://www.example.com/students", name = "magazine", substitutionHeadNamespace = "http://www.example.com/papers", substitutionHeadName = "paper")
+    @XmlElementDecl(namespace = "http://www.example.com/papers", name = "magazine", substitutionHeadNamespace = "http://www.example.com/papers", substitutionHeadName = "paper")
     public JAXBElement<Magazine> createMagazine(Magazine value) {
         return new JAXBElement<Magazine>(_Magazine_QNAME, Magazine.class, null, value);
     }
