@@ -2,3 +2,15 @@
 [INFO ] 2019-12-10 22:19:15.160 [main] PapersFactory - JAXB parser created
 [INFO ] 2019-12-10 23:05:39.876 [main] PapersFactory - JAXB parser created
 [INFO ] 2019-12-10 23:12:12.001 [main] PapersFactory - JAXB parser created
+[INFO ] 2019-12-10 23:36:47.590 [main] ParserFactory - DOM parser created
+[INFO ] 2019-12-10 23:38:08.668 [main] ParserFactory - SAX parser created
+[INFO ] 2019-12-10 23:38:28.055 [main] ParserFactory - JAXB parser created
+[INFO ] 2019-12-10 23:41:54.533 [main] ParserFactory - DOM parser created
+[INFO ] 2019-12-10 23:41:54.630 [main] ParserFactory - JAXB parser created
+[INFO ] 2019-12-10 23:41:54.719 [main] ParserFactory - SAX parser created
+[INFO ] 2019-12-10 23:46:01.490 [main] ParserFactory - DOM parser created
+[INFO ] 2019-12-10 23:46:01.506 [main] ParserFactory - JAXB parser created
+[INFO ] 2019-12-10 23:46:01.513 [main] ParserFactory - SAX parser created
+[INFO ] 2019-12-10 23:49:25.454 [main] ParserFactory - DOM parser created
+[INFO ] 2019-12-10 23:49:25.506 [main] ParserFactory - JAXB parser created
+[INFO ] 2019-12-10 23:49:25.513 [main] ParserFactory - SAX parser created
